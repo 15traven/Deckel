@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Violeta.Resources;
 using Wpf.Ui.Violeta.Win32;
 using Application = System.Windows.Forms.Application;
+using System.Reflection;
 
 namespace Deckel
 {
@@ -23,12 +24,12 @@ namespace Deckel
             _icon = new TrayIconHost
             {
                 Icon = GetTrayIcon(),
-                ToolTipText = $"{Application.ProductName} v{Application.ProductVersion}",
+                ToolTipText = $"{Application.ProductName} v{Application.ProductVersion.Split('+')[0]}",
                 Menu =
                 [
                     new TrayMenuItem()
                     {
-                        Header = $"v{Application.ProductVersion}",
+                        Header = $"v{Application.ProductVersion.Split('+')[0]}",
                         IsEnabled = false
                     },
                     new TraySeparator(),
