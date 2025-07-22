@@ -121,7 +121,13 @@
   <data name="tray_black" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\tray_black.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tray_black_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\tray_black_active.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tray_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\tray_white.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tray_white_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\tray_white_active.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

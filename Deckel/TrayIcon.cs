@@ -1,22 +1,14 @@
 ﻿using Deckel.Helpers;
-using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Printing;
-using System.Windows;
-using System.Windows.Forms;
+using Deckel.NativeMethods;
 using CommunityToolkit.Mvvm.Input;
-using Wpf.Ui.Violeta.Resources;
 using Wpf.Ui.Violeta.Win32;
 using Application = System.Windows.Forms.Application;
-using System.Reflection;
 
 namespace Deckel
 {
     internal partial class TrayIcon : IDisposable
     {
-        private static TrayIcon _instance;
+        private static TrayIcon? _instance;
         private readonly TrayIconHost _icon;
 
         private TrayIcon()
@@ -41,13 +33,19 @@ namespace Deckel
                 ],
                 IsVisible = true
             };
+
+            _icon.LeftDown += (sender, e) =>
+            {
+                User32.ToggleDesktopIcons();
+                UpdateIcon();
+            };
         }
 
         private static nint GetTrayIcon()
         {
             return ThemeHelper.SystemUsesDarkTheme()
-                ? Resources.tray_white.Handle
-                : Resources.tray_black.Handle;
+                ? (User32.IsDesktopIconsVisible() ? Resources.tray_white.Handle : Resources.tray_white_active.Handle)
+                : (User32.IsDesktopIconsVisible() ? Resources.tray_black.Handle : Resources.tray_black_active.Handle);
         }
 
         public void Dispose()
@@ -63,7 +61,8 @@ namespace Deckel
         public static void UpdateIcon()
         {
             var newIcon = GetTrayIcon();
-            _instance._icon.Icon = newIcon;
+            if (_instance != null)
+                _instance._icon.Icon = newIcon;
         }
     }
 }

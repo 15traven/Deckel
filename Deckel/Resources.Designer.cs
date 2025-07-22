@@ -73,9 +73,29 @@ namespace Deckel {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon tray_black_active {
+            get {
+                object obj = ResourceManager.GetObject("tray_black_active", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon tray_white {
             get {
                 object obj = ResourceManager.GetObject("tray_white", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon tray_white_active {
+            get {
+                object obj = ResourceManager.GetObject("tray_white_active", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

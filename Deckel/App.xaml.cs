@@ -9,7 +9,7 @@ namespace Deckel
 {
     public partial class App
     {
-        private Mutex _isRunning;
+        private Mutex? _isRunning;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -39,7 +39,8 @@ namespace Deckel
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            _isRunning.ReleaseMutex();
+            if (_isRunning != null)
+                _isRunning.ReleaseMutex();
             TrayIcon.GetInstance().Dispose();
         }
 
