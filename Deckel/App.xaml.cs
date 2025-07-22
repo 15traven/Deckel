@@ -1,20 +1,9 @@
 ﻿using Deckel.Helpers;
 using Deckel.NativeMethods;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Media;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Violeta.Appearance;
-using Application = System.Windows.Application;
 
 namespace Deckel
 {
@@ -37,6 +26,31 @@ namespace Deckel
             _ = TrayIcon.GetInstance();
 
             base.OnStartup(e);
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            if (!EnsureFirstInstance())
+            {
+                Shutdown();
+                return;
+            }
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            _isRunning.ReleaseMutex();
+            TrayIcon.GetInstance().Dispose();
+        }
+
+        private bool EnsureFirstInstance()
+        {
+            _isRunning = new Mutex(true, "Deckel.App.Mutex", out bool isFirst);
+            if (isFirst)
+                return true;
+
+            System.Windows.Forms.MessageBox.Show("Deckel is already running", "Failed to open Deckel", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return false;
         }
     }
 }
