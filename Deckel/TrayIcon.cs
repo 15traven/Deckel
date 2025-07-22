@@ -3,6 +3,7 @@ using Deckel.NativeMethods;
 using CommunityToolkit.Mvvm.Input;
 using Wpf.Ui.Violeta.Win32;
 using Application = System.Windows.Forms.Application;
+using System.Diagnostics;
 
 namespace Deckel
 {
@@ -23,6 +24,12 @@ namespace Deckel
                     {
                         Header = $"v{Application.ProductVersion.Split('+')[0]}",
                         IsEnabled = false
+                    },
+                    new TraySeparator(),
+                    new TrayMenuItem()
+                    { 
+                        Header = "Opend Desktop in Explorer",
+                        Command = new RelayCommand(() => Process.Start("explorer.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)))
                     },
                     new TraySeparator(),
                     new TrayMenuItem()
