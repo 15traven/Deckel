@@ -39,8 +39,7 @@ namespace Deckel
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            if (_isRunning != null)
-                _isRunning.ReleaseMutex();
+            _isRunning?.ReleaseMutex();
             TrayIcon.GetInstance().Dispose();
         }
 
