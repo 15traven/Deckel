@@ -28,7 +28,10 @@ namespace Deckel
                 ? ApplicationTheme.Dark
                 : ApplicationTheme.Light);
             SystemEvents.UserPreferenceChanged += (_, _) =>
+            {
                 ThemeManager.Apply(ThemeHelper.AppsUseDarkTheme() ? ApplicationTheme.Dark : ApplicationTheme.Light);
+                TrayIcon.UpdateIcon();
+            };
             UxTheme.ApplyPreferredAppMode();
 
             _ = TrayIcon.GetInstance();

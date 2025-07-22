@@ -42,7 +42,7 @@ namespace Deckel
             };
         }
 
-        private nint GetTrayIcon()
+        private static nint GetTrayIcon()
         {
             return ThemeHelper.SystemUsesDarkTheme()
                 ? Resources.tray_white.Handle
@@ -57,6 +57,12 @@ namespace Deckel
         public static TrayIcon GetInstance()
         {
             return _instance ??= new TrayIcon();
+        }
+
+        public static void UpdateIcon()
+        {
+            var newIcon = GetTrayIcon();
+            _instance._icon.Icon = newIcon;
         }
     }
 }
