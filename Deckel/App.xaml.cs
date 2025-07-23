@@ -13,6 +13,8 @@ namespace Deckel
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            AutoStartHelper.CreateAutoStartTask();
+
             ThemeManager.Apply(ThemeHelper.AppsUseDarkTheme()
                 ? ApplicationTheme.Dark
                 : ApplicationTheme.Light);
