@@ -22,10 +22,7 @@ namespace Deckel.Helpers
 
             // If the task exists, just enable it.
             if (taskFolder.GetTasks().Exists(TaskName))
-            {
-                Task existingRegisteredTask = taskFolder.Tasks[TaskName];
-                existingRegisteredTask.Enabled = true;
-            }
+                return;
 
             // ------------------------------------------------------------
             // Create the task
@@ -69,18 +66,23 @@ namespace Deckel.Helpers
             taskFolder.RegisterTaskDefinition(TaskName, taskDefinition);
         }
 
-        public static void DeleteAutoStartTask()
+        public static bool IsAutoStartTaskEnabled()
         {
-            // ------------------------------------------------------------
-            // Get the Deckel task folder.
             TaskFolder taskFolder = _taskService.GetFolder(TaskFolderName);
-            if (taskFolder == null)
+            if (!taskFolder.GetTasks().Exists(TaskName))
+                return false;
+
+            return taskFolder.Tasks[TaskName].Enabled;
+        }
+
+        public static void ToggleAutoStartTask()
+        {
+            TaskFolder taskFolder = _taskService.GetFolder(TaskFolderName);
+            if (!taskFolder.GetTasks().Exists(TaskName))
                 return;
 
-            // ------------------------------------------------------------
-            // If the task exists, disable.
-            if (taskFolder.GetTasks().Exists(TaskName))
-                taskFolder.DeleteTask(TaskName);
+            bool isEnabled = taskFolder.Tasks[TaskName].Enabled;
+            taskFolder.Tasks[TaskName].Enabled = !isEnabled;
         }
     }
 }

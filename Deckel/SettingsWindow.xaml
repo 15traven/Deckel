@@ -25,7 +25,8 @@
             <ui:Card Margin="8">
                 <DockPanel>
                     <TextBlock Text="Run at startup"/>
-                    <ui:ToggleSwitch HorizontalAlignment="Right"/>
+                    <ui:ToggleSwitch x:Name="AutoStartToggle"
+                                     HorizontalAlignment="Right"/>
                 </DockPanel>
             </ui:Card>
         </ui:StackPanel>

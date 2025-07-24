@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using Deckel.Helpers;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -20,6 +21,10 @@ namespace Deckel
         public SettingsWindow()
         {
             InitializeComponent();
+
+            AutoStartToggle.IsChecked = AutoStartHelper.IsAutoStartTaskEnabled();
+            AutoStartToggle.Checked += (_, _) => AutoStartHelper.ToggleAutoStartTask();
+            AutoStartToggle.Unchecked += (_, _) => AutoStartHelper.ToggleAutoStartTask();
         }
     }
 }
