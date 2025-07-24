@@ -11,6 +11,7 @@ namespace Deckel
     {
         private static TrayIcon? _instance;
         private readonly TrayIconHost _icon;
+        private SettingsWindow? _settingsWindow;
 
         private TrayIcon()
         {
@@ -30,6 +31,13 @@ namespace Deckel
                     { 
                         Header = "Opend Desktop in Explorer",
                         Command = new RelayCommand(() => Process.Start("explorer.exe", Environment.GetFolderPath(Environment.SpecialFolder.Desktop)))
+                    },
+                    new TrayMenuItem()
+                    {
+                        Header = "Settings...",
+                        Command = new RelayCommand(() => {
+                            ShowSettingsWindow();
+                        })
                     },
                     new TraySeparator(),
                     new TrayMenuItem()
@@ -53,6 +61,20 @@ namespace Deckel
             return ThemeHelper.SystemUsesDarkTheme()
                 ? (User32.IsDesktopIconsVisible() ? Resources.tray_white.Handle : Resources.tray_white_active.Handle)
                 : (User32.IsDesktopIconsVisible() ? Resources.tray_black.Handle : Resources.tray_black_active.Handle);
+        }
+
+        private void ShowSettingsWindow()
+        {
+            if (_settingsWindow == null)
+            {
+                _settingsWindow = new();
+                _settingsWindow.Closed += (_, _) => _settingsWindow = null;
+                _settingsWindow.Show();
+            }
+            else
+            {
+                _settingsWindow.Focus();
+            }
         }
 
         public void Dispose()

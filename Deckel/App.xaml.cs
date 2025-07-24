@@ -3,6 +3,7 @@ using Deckel.NativeMethods;
 using Microsoft.Win32;
 using System.Windows;
 using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 using Wpf.Ui.Violeta.Appearance;
 
 namespace Deckel
