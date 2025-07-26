@@ -16,7 +16,8 @@ body:
   validations:
     required: true
 
-- type: textarea
+- id: os version
+  type: input
   attributes:
     label: OS version
     placeholder: Edition, Version, OS Build

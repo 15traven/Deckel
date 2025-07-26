@@ -1,6 +1,5 @@
 name: "⭐ Feature or enhancement request"
-description: Propose something new.
-type: Feature
+description: Propose something new
 labels:
 - enhancement
 body:
