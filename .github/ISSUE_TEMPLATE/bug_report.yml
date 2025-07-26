@@ -16,7 +16,7 @@ body:
   validations:
     required: true
 
-- id: os version
+- id: os-version
   type: input
   attributes:
     label: OS version
