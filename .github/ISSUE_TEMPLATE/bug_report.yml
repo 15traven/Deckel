@@ -1,0 +1,39 @@
+name: "🕷️ Bug report"
+description: Report errors or unexpected behavior
+labels:
+- bug
+body:
+- type: markdown
+  attributes:
+    value: Please make sure to [search for existing issues](https://github.com/15traven/Deckel/issues) before filing a new one!
+
+- id: version
+  type: input
+  attributes:
+    label: Deckel version
+    placeholder: X.X.X
+    description: Hover over the system tray icon or look at Settings
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: OS version
+    placeholder: Edition, Version, OS Build
+    description: Select Start > Settings > System, and then select About to get the information you need.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: ✔️ Expected Behavior
+    placeholder: What were you expecting?
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: ❌ Actual Behavior
+    placeholder: What happened instead?
+  validations:
+    required: true

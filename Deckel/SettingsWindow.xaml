@@ -16,12 +16,42 @@
     WindowStyle="None"
     Topmost="True">
 
-    <StackPanel>
-        <ui:TitleBar Title="Deckel Settings"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0"
+                     Title="Deckel Settings"
                      CanMaximize="False"
                      ShowMaximize="False"
                      ShowMinimize="False"/>
-        <ui:StackPanel>
+        
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <ui:HyperlinkButton
+                    Padding="4"
+                    Content="GitHub repository"
+                    NavigateUri="https://github.com/15traven/Deckel"/>
+                <ui:HyperlinkButton
+                    Padding="4"
+                    Content="Report a bug"
+                    NavigateUri="https://github.com/15traven/Deckel"/> 
+                <ui:HyperlinkButton
+                    Padding="4"
+                    Content="Request a feature"
+                    NavigateUri="https://github.com/15traven/Deckel/issues/new"/>
+            </StackPanel>
+        </Grid>
+
+        <ui:StackPanel Grid.Row="2">
             <ui:Card Margin="8">
                 <DockPanel>
                     <TextBlock Text="Run at startup"/>
@@ -30,5 +60,5 @@
                 </DockPanel>
             </ui:Card>
         </ui:StackPanel>
-    </StackPanel>
+    </Grid>
 </ui:FluentWindow>
