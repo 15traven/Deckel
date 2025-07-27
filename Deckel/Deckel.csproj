@@ -40,4 +40,12 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\cover.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\cover.png" />
+  </ItemGroup>
+
 </Project>

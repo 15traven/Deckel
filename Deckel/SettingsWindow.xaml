@@ -28,27 +28,43 @@
                      CanMaximize="False"
                      ShowMaximize="False"
                      ShowMinimize="False"/>
-        
-        <Grid Grid.Row="1" Margin="8">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <ui:HyperlinkButton
+        <Grid Grid.Row="1" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ui:Image Source="Resources/cover.png"
+                      Width="120"
+                      CornerRadius="6"/>
+
+            <Grid Grid.Column="1" Margin="8, 0, 0, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ui:TextBlock Padding="4, 0, 0, 0"
+                              TextWrapping="Wrap"
+                              FontSize="15"
+                              Text="Deckel enables you to enhance your presentations, video conferences, live streams, and screen sharing sessions by eliminating desktop clutter and minimizing distractions."/>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <ui:HyperlinkButton
                     Padding="4"
-                    Content="GitHub repository"
-                    NavigateUri="https://github.com/15traven/Deckel"/>
-                <ui:HyperlinkButton
+                    Content="GitHub repo"
+                    NavigateUri="https://github.com/15traven/Deckel/"/>
+                    <ui:HyperlinkButton
                     Padding="4"
                     Content="Report a bug"
-                    NavigateUri="https://github.com/15traven/Deckel"/> 
-                <ui:HyperlinkButton
+                    NavigateUri="https://github.com/15traven/Deckel/issues/new?template=bug_report.yml"/>
+                    <ui:HyperlinkButton
                     Padding="4"
                     Content="Request a feature"
-                    NavigateUri="https://github.com/15traven/Deckel/issues/new"/>
-            </StackPanel>
+                    NavigateUri="https://github.com/15traven/Deckel/issues/new?template=feature_request.yml"/>
+                </StackPanel>
+            </Grid>
         </Grid>
 
         <ui:StackPanel Grid.Row="2">
