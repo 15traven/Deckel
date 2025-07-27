@@ -9,6 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<UseWPF>true</UseWPF>
 	<UseWindowsForms>true</UseWindowsForms>
+	<ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,16 +19,6 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0 " />
     <PackageReference Include="WPF-UI.Violeta" Version="4.0.2.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Assets\wpfui-icon-256.png" />
-    <None Remove="Assets\wpfui-icon-1024.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Assets\wpfui-icon-256.png" />
-    <Resource Include="Assets\wpfui-icon-1024.png" />
   </ItemGroup>
 
   <ItemGroup>
