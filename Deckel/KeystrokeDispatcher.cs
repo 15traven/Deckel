@@ -12,16 +12,11 @@ namespace Deckel
     internal class KeystrokeDispatcher : IDisposable
     {
         private static KeystrokeDispatcher? _instance;
-        private static HashSet<Keys>? _validKeys;
         private GlobalKeyboardHook? _hook;
 
         protected KeystrokeDispatcher()
         {
             InstallKeyHook(KeyDownEventHandler);
-
-            _validKeys = [
-                Keys.Alt, Keys.H
-            ];
         }
 
         private void InstallKeyHook(KeyEventHandler downHandler)
@@ -33,7 +28,9 @@ namespace Deckel
 
         private void KeyDownEventHandler(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.H)
+            if ((e.Modifiers & Keys.Control) == Keys.Control &&
+                (e.Modifiers & Keys.Alt) == Keys.Alt &&
+                e.KeyCode == Keys.H)
             {
                 User32.ToggleDesktopIcons();
                 TrayIcon.UpdateIcon();
