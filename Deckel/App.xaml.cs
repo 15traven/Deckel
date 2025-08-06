@@ -1,6 +1,7 @@
 ﻿using Deckel.Helpers;
 using Deckel.NativeMethods;
 using Microsoft.Win32;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -27,6 +28,7 @@ namespace Deckel
             UxTheme.ApplyPreferredAppMode();
 
             _ = TrayIcon.GetInstance();
+            KeystrokeDispatcher.GetInstance();
 
             base.OnStartup(e);
         }
@@ -43,7 +45,9 @@ namespace Deckel
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             _isRunning?.ReleaseMutex();
+
             TrayIcon.GetInstance().Dispose();
+            KeystrokeDispatcher.GetInstance().Dispose();
         }
 
         private bool EnsureFirstInstance()
